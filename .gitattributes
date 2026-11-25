@@ -34,3 +34,10 @@
 *.dll binary
 *.so  binary
 *.lib binary
+
+# ---------- Windows 批处理：必须 CRLF ----------
+# .cmd / .bat 用 LF 结尾时 cmd.exe 可能解析异常（带 label / goto 时最容易出事）。
+# 这条必须放在上面的 `* text=auto eol=lf` 之后才生效 ——
+# gitattributes 是「最后匹配的规则生效」。
+*.cmd text eol=crlf
+*.bat text eol=crlf
