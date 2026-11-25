@@ -40,6 +40,11 @@ node_modules/
 .vscode/
 .idea/
 
+# ---------- 美术资源（走坚果云 junction，不进 git）----------
+# Assets/Art 是指向坚果云目录的 junction。这一行必须有，否则 git 会顺着
+# 链接把整份美术资源提交进来。详见「资源同步方案.md」第 5 节第 4 步。
+Assets/Art/
+
 # ---------- 构建产物 ----------
 dist/
 out/

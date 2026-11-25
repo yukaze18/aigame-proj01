@@ -3,7 +3,7 @@
 > 约定：**每次开工先读这份文件，每次收工前更新它。**
 > 它本身进 git，所以自带历史，谁在什么时候改了什么都能查到。
 
-最后更新：2026-11-25 18:35（+08:00）
+最后更新：2026-11-25 19:35（+08:00）
 更新者：本机 `G:\AIGame_Proj01`
 
 ---
@@ -15,10 +15,10 @@
 | 项目名 | AIGame_Proj01 |
 | 工程路径 | `G:\AIGame_Proj01`（本机） |
 | 引擎 | **未定** |
-| 阶段 | 本地仓库就绪，等待推送远端；游戏开发未开始 |
+| 阶段 | 本地仓库就绪，SSH 认证已通；等待在 GitHub 建空仓库后首次推送 |
 | 分支 | `main` |
-| 远端 | **GitHub 私有仓库（待创建、待填地址）** |
-| 提交身份 | **占位**：`AIGame_Proj01 <aigame-proj01@users.noreply.local>` ← 待替换 |
+| 远端 | **GitHub 私有仓库**：`git@github.com:yukaze18/aigame-proj01.git`（仓库**尚未创建**） |
+| 提交身份 | `yukaze18 <54407187+yukaze18@users.noreply.github.com>`（**仅仓库级**；全局未设置） |
 | 资源方案 | 已定：代码走 git，美术资源走坚果云 → 见 `资源同步方案.md` |
 
 ---
@@ -39,7 +39,7 @@
 
 ## 三、待办（按顺序执行）
 
-- [ ] **1. 替换占位身份**（不替换的话，以后每次提交都会挂这个名字）
+- [x] **1. 替换占位身份** —— 已完成：`yukaze18 <54407187+yukaze18@users.noreply.github.com>`（仅仓库级）
 - [ ] **2. 在 GitHub 建私有空仓库**，拿到地址
 - [ ] **3. 配 remote 并推送**
 - [ ] **4. 家里设备 clone 并接入 DSH**
@@ -124,6 +124,14 @@ git config user.email "你的邮箱"
 - 曾考虑把远端换成坚果云，最后否掉：坚果云解决的是「存储额度」，
   而当初不推荐它的理由是「同步 ≠ 版本控制」和「半同步状态」，
   这两条跟额度无关。坚果云的合适位置是「资源的搬运工」，不是 git 远端。
+- **DSH 的 bash 里用的 git，和你在 PowerShell 里用的 git 不是同一个**（排错时最容易踩）：
+  - DSH bash → **niugit 2.56.0**（DSH 自带），**没有任何 credential helper，也不带 GCM**
+  - PowerShell / CMD → **Git for Windows 2.39.2**，系统级已配 `credential.helper=manager`
+  - 两者共用同一份 `~/.gitconfig` 和 Windows 凭据管理器
+  - **结论：远端一律用 SSH 地址（`git@github.com:...`）**，两边都能用；
+    只有 HTTPS 远端才会碰到「浏览器登录了但 DSH 里推不动」这个差异
+- `.gitignore` 原先缺 `Assets/Art/` 一行，已补。不补的话，建 junction 之后
+  git 会顺着链接把整份美术资源提交进去（`资源同步方案.md` 第 5 节第 4 步本来就要求这行）。
 
 ---
 
