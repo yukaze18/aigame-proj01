@@ -1,0 +1,36 @@
+# ============================================================
+# 第 1 条必须是它，且必须在最前面
+# gitattributes 是「最后匹配的规则生效」，这条如果放在 LFS 规则
+# 后面，会把 PNG / FBX 重新标记成文本文件，LFS 直接失效。
+# ============================================================
+* text=auto eol=lf
+
+# ---------- 二进制资源 → 交给 Git LFS ----------
+*.png   filter=lfs diff=lfs merge=lfs -text
+*.jpg   filter=lfs diff=lfs merge=lfs -text
+*.jpeg  filter=lfs diff=lfs merge=lfs -text
+*.tga   filter=lfs diff=lfs merge=lfs -text
+*.psd   filter=lfs diff=lfs merge=lfs -text
+*.ai    filter=lfs diff=lfs merge=lfs -text
+*.fbx   filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.obj   filter=lfs diff=lfs merge=lfs -text
+*.wav   filter=lfs diff=lfs merge=lfs -text
+*.mp3   filter=lfs diff=lfs merge=lfs -text
+*.ogg   filter=lfs diff=lfs merge=lfs -text
+*.mp4   filter=lfs diff=lfs merge=lfs -text
+*.ttf   filter=lfs diff=lfs merge=lfs -text
+*.otf   filter=lfs diff=lfs merge=lfs -text
+
+# ---------- Unity 文本资源：走专用三方合并，不要交给 LFS ----------
+# 注意：这需要额外配置 merge.unityyamlmerge.driver 才能生效，
+# 没配的话只影响「合并」动作，不影响日常提交。
+*.unity  merge=unityyamlmerge
+*.prefab merge=unityyamlmerge
+*.asset  merge=unityyamlmerge
+*.meta   merge=unityyamlmerge
+
+# ---------- 明确标记为二进制 ----------
+*.dll binary
+*.so  binary
+*.lib binary

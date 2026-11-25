@@ -1,0 +1,50 @@
+# ---------- Unity ----------
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# ---------- Godot ----------
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+
+# ---------- 通用 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.bak
+*.log
+__pycache__/
+node_modules/
+.vscode/
+.idea/
+
+# ---------- 构建产物 ----------
+dist/
+out/
+build/
+*.exe
+*.apk
+*.aab
+*.zip
