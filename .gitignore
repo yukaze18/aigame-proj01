@@ -53,3 +53,11 @@ build/
 *.apk
 *.aab
 *.zip
+
+# ---------- AI 出图原图（走 dsh-image-gen 插件自动落盘）----------
+# 不进的三个理由：
+#   1. 挂 LFS，1 GiB 免费额度撑不住（单张 ~968KB，300 张迭代就 330MB+）
+#   2. 文件名是随机哈希（image-7d617e0d.png），当不了过程证据
+#   3. 原图可由 prompts/ 里的提示词 + 模型参数重新生成
+# 证据链改由 prompts/ 承载；需要留档的少量原图手工放进 assets/raw/ 并单独 add -f
+dsh-image-gen/
